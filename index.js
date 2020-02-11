@@ -28,5 +28,20 @@ person[selection] = "Harry";
 let selectedColors = ["red", "blue"];
 selectedColors[2] = "green";
 let len = selectedColors.length;
-console.log(len);
-console.log(typeof selectedColors);
+// console.log(len);
+// console.log(typeof selectedColors);
+
+// =================================================
+// Function
+
+function greet(firstName, lastName) {
+  console.log("Hello " + firstName + " " + lastName);
+}
+
+greet("John", "Smith");
+
+function square(number) {
+  return number * number;
+}
+let number = square(2);
+//console.log(number);
