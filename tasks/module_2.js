@@ -21,10 +21,10 @@ console.log(result);
 console.log("==============================================================");
 console.log("==== Every/Some ====");
 console.log("==============================================================");
-const goodUsers = [{ id: 1 }, { id: 2 }, { id: 3 }];
+const goodUsers = [{id: 1}, {id: 2}, {id: 3}];
 // `checkUsersValid` is the function you'll define
 const checkUsersValid = (goodArr) => {
-    return function(arrToCheck) {
+    return function (arrToCheck) {
         let fine = true;
         for (let e1 of arrToCheck) {
             let count = 0;
@@ -43,10 +43,10 @@ const checkUsersValid = (goodArr) => {
 
 const testAllValid = checkUsersValid(goodUsers);
 
-const result1 = testAllValid([{ id: 2 }, { id: 1 }]);
+const result1 = testAllValid([{id: 2}, {id: 1}]);
 console.log("Only valid", result1);
 
-const result2 = testAllValid([{ id: 2 }, { id: 4 }, { id: 1 }]);
+const result2 = testAllValid([{id: 2}, {id: 4}, {id: 1}]);
 console.log("Only valid", result2);
 
 console.log("==============================================================");
@@ -58,11 +58,43 @@ const countWords = (inputWords) => {
         let i = typeof map.get(f) == "undefined" ? 1 : map.get(f) + 1;
         map.set(f, i);
     }
-    return Array.from(map).reduce(
-        (obj, [key, value]) => Object.assign(obj, { [key]: value }),
-        {}
-    );
+    return Array.from(map).reduce((obj, [key, value]) => Object.assign(obj, {[key]: value}), {});
 };
 
 const inputWords = ["Apple", "Banana", "Apple", "Durian", "Durian", "Durian"];
 console.log(countWords(inputWords));
+
+console.log("==============================================================");
+console.log("==== Palindrome ====");
+console.log("==============================================================");
+const isPalindrome = (string) => {
+    let pal = string === string.split("").reverse().join("")
+    return pal
+        ? 'The entry is a palindrome'
+        : 'Entry is not a palindrome';
+}
+
+console.log(isPalindrome('madam'))
+console.log(isPalindrome('fox'))
+
+console.log("==============================================================");
+console.log("==== Recursion ====");
+console.log("==============================================================");
+
+const factorial = (num) => {
+    if (num <= 2) return num
+    return num * factorial(num - 1)
+};
+console.log(factorial(1))
+console.log(factorial(5))
+
+const amountToCoins = () => {
+};
+
+const repeat = (callback, count) => {
+};
+
+repeat(console.log('Wassup'), 5);
+
+const reduce = () => {
+};
