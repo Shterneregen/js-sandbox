@@ -3,15 +3,12 @@
 console.log("==============================================================");
 console.log("==== Change the capitalization of all letters in a string ====");
 console.log("==============================================================");
-const changeCase = (str) => {
-  var newStr = "";
-  for (var character of str) {
-    newStr +=
-      character == character.toUpperCase()
-        ? character.toLowerCase()
-        : character.toUpperCase();
-  }
-  return newStr;
+const changeCase = (string) => {
+    let text = '';
+    [...string].forEach((letter) => {
+        text += /[A-Z]/.test(letter) ? letter.toLowerCase() : letter.toUpperCase();
+    });
+    return text;
 };
 
 let str1 = "21century";
@@ -22,21 +19,8 @@ console.log(str2, "->", changeCase(str2)); // Output: hYBRIS
 console.log("==============================================================");
 console.log("==== Filter out the non-unique values in an array ====");
 console.log("==============================================================");
-const filterNonUnique = (array) => {
-  var uniqArr = new Array();
-
-  for (var x of array) {
-    var count = 0;
-    for (var y of array) {
-      if (x == y) {
-        count++;
-      }
-    }
-    if (count == 1) {
-      uniqArr.push(x);
-    }
-  }
-  return uniqArr;
+const filterNonUnique = (arr) => {
+    return arr.filter((item, index) => arr.indexOf(item) === arr.lastIndexOf(item));
 };
 
 let inputArr = [1, 2, 2, 3, 4, 4, 5];
@@ -46,9 +30,9 @@ console.log("==============================================================");
 console.log("==== Sort string in alphabetical order ====");
 console.log("==============================================================");
 const alphabetSort = (str) => {
-  var arr = str.split("");
-  var sorted = arr.sort();
-  return sorted.join("");
+    let arr = str.split("");
+    let sorted = arr.sort();
+    return sorted.join("");
 };
 let str = "Python";
 console.log(str, "->", alphabetSort(str));
@@ -57,8 +41,8 @@ console.log("==============================================================");
 console.log("==== Get second min integer ====");
 console.log("==============================================================");
 const getSecondMinimum = (arr) => {
-  var sorted = arr.sort();
-  return sorted[1];
+    arr.sort();
+    return arr[1];
 };
 let inputArr2 = [5, 0, 7, 3, 8];
 console.log(inputArr2, "->", getSecondMinimum(inputArr2));
@@ -67,14 +51,9 @@ console.log("==============================================================");
 console.log("==== Double every even integer ====");
 console.log("==============================================================");
 const doubleEveryEven = (arr) => {
-  var newArr = new Array();
-  for (var el of arr) {
-    if (el % 2 == 0) {
-      el *= 2;
-    }
-    newArr.push(el);
-  }
-  return newArr;
+    return arr.map((num) => {
+        return num % 2 ? num : num * 2;
+    });
 };
 
 let inputArr3 = [2, 0, 7, 3, 8, 4];
@@ -84,13 +63,7 @@ console.log("==============================================================");
 console.log("==== Create array with all possible pairs of two arrays ====");
 console.log("==============================================================");
 const getArrayElementsPairs = (arr1, arr2) => {
-  arrOfArr = [];
-  for (var el1 of arr1) {
-    for (var el2 of arr2) {
-      arrOfArr.push([el1, el2]);
-    }
-  }
-  return arrOfArr;
+    return arr1.flatMap(item => arr2.map(i => [item, i]));
 };
 
 let arr1 = [1, 2];
@@ -101,51 +74,25 @@ console.log("==============================================================");
 console.log("==== Deep equal ====");
 console.log("==============================================================");
 // https://stackoverflow.com/questions/25456013/javascript-deepequal-comparison/25456134
-const deepEqual = function(x, y) {
-  if (x === y) {
-    return true;
-  } else if (
-    typeof x == "object" &&
-    x != null &&
-    typeof y == "object" &&
-    y != null
-  ) {
-    if (Object.keys(x).length != Object.keys(y).length) return false;
-
-    for (var prop in x) {
-      if (y.hasOwnProperty(prop)) {
-        if (!deepEqual(x[prop], y[prop])) return false;
-      } else return false;
-    }
-
-    return true;
-  } else return false;
+const deepEqual = (obj1, obj2) => {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
 };
 
-let obj = { here: { is: "an" }, object: 2 };
+let obj = {here: {is: "an"}, object: 2};
 console.log(deepEqual(obj, obj));
-console.log(deepEqual(obj, { here: 1, object: 2 }));
-console.log(deepEqual(obj, { here: { is: "an" }, object: 2 }));
+console.log(deepEqual(obj, {here: 1, object: 2}));
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
 
 console.log("==============================================================");
 console.log("==== Format date ====");
 console.log("==============================================================");
-const formatDate = (notFormattedDate) => {
-  if (Array.isArray(notFormattedDate)) {
-    var date = new Date(...notFormattedDate);
-  } else {
-    var date = new Date(notFormattedDate);
-  }
-  let dd = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-  let mm =
-    date.getMonth() + 1 < 10
-      ? "0" + (date.getMonth() + 1)
-      : date.getMonth() + 1;
-  let yy = date
-    .getFullYear()
-    .toString()
-    .substr(-2);
-  return dd + "." + mm + "." + yy;
+const formatDate = (...date) => {
+    let parsedDate = new Date(...date.flatMap(d => d));
+    let dd = ('0' + parsedDate.getDate()).slice(-2);
+    let mm = ('0' + (parsedDate.getMonth() + 1)).slice(-2);
+    let yy = parsedDate.getYear().toString().slice(-2);
+
+    return `${dd}.${mm}.${yy}`;
 };
 
 let date1 = "2011-10-02";
