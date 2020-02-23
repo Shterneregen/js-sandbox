@@ -91,33 +91,33 @@ console.log(factorial(5));
 console.log("==============================================================");
 const amountToCoins = (expectedSum, coins, ...args) => {
     let resultCoins = typeof args[0] === 'undefined' ? [] : args[0];
-    let currentSum = resultCoins.length === 0
-        ? 0
-        : resultCoins.reduce((a, b) => a + b);
+    let currentSum = resultCoins.length === 0 ? 0 : resultCoins.reduce((a, b) => a + b);
     let currentCoin = coins[0];
-
     if (currentSum + currentCoin === expectedSum) {
         resultCoins.push(currentCoin);
         return resultCoins;
-    } else if (currentSum + currentCoin < expectedSum) {
-        resultCoins.push(currentCoin);
-        return amountToCoins(expectedSum, coins, resultCoins);
-    } else {
-        coins.shift();
-        return amountToCoins(expectedSum, coins, resultCoins);
     }
+    currentSum + currentCoin < expectedSum ? resultCoins.push(currentCoin) : coins.shift();
+    return amountToCoins(expectedSum, coins, resultCoins);
 };
 let sum = amountToCoins(44, [25, 10, 5, 2, 1]);
 console.log(sum);
 console.log("==============================================================");
 
 const repeat = (f, count) => {
+    if (count === 0) {
+        return;
+    }
+    f();
+    count--;
+    repeat(f, count);
 };
 
-repeat(console.log('Wassup'), 5);
+repeat(() => console.log('Wassup'), 5);
 
 console.log("==============================================================");
-const reduce = () => {
+const reduce = (arr) => {
+    return arr.reduce((a, b) => a + b);
 };
-
+console.log('[1,2,3] -> ', reduce([1, 2, 3]));
 console.log("==============================================================");
