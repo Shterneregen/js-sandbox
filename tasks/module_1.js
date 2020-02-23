@@ -20,7 +20,7 @@ console.log("==============================================================");
 console.log("==== Filter out the non-unique values in an array ====");
 console.log("==============================================================");
 const filterNonUnique = (arr) => {
-    return arr.filter((item, index) => arr.indexOf(item) === arr.lastIndexOf(item));
+    return arr.filter((item) => arr.indexOf(item) === arr.lastIndexOf(item));
 };
 
 let inputArr = [1, 2, 2, 3, 4, 4, 5];

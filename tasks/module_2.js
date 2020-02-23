@@ -68,33 +68,56 @@ console.log("==============================================================");
 console.log("==== Palindrome ====");
 console.log("==============================================================");
 const isPalindrome = (string) => {
-    let pal = string === string.split("").reverse().join("")
+    let pal = string === string.split("").reverse().join("");
     return pal
         ? 'The entry is a palindrome'
         : 'Entry is not a palindrome';
-}
+};
 
-console.log(isPalindrome('madam'))
-console.log(isPalindrome('fox'))
+console.log(isPalindrome('madam'));
+console.log(isPalindrome('fox'));
 
 console.log("==============================================================");
 console.log("==== Recursion ====");
 console.log("==============================================================");
 
 const factorial = (num) => {
-    if (num <= 2) return num
+    if (num <= 2) return num;
     return num * factorial(num - 1)
 };
-console.log(factorial(1))
-console.log(factorial(5))
+console.log(factorial(1));
+console.log(factorial(5));
 
-const amountToCoins = () => {
+console.log("==============================================================");
+const amountToCoins = (expectedSum, coins, ...args) => {
+    let resultCoins = typeof args[0] === 'undefined' ? [] : args[0];
+    let currentSum = resultCoins.length === 0
+        ? 0
+        : resultCoins.reduce((a, b) => a + b);
+    let currentCoin = coins[0];
+
+    if (currentSum + currentCoin === expectedSum) {
+        resultCoins.push(currentCoin);
+        return resultCoins;
+    } else if (currentSum + currentCoin < expectedSum) {
+        resultCoins.push(currentCoin);
+        return amountToCoins(expectedSum, coins, resultCoins);
+    } else {
+        coins.shift();
+        return amountToCoins(expectedSum, coins, resultCoins);
+    }
 };
+let sum = amountToCoins(44, [25, 10, 5, 2, 1]);
+console.log(sum);
+console.log("==============================================================");
 
-const repeat = (callback, count) => {
+const repeat = (f, count) => {
 };
 
 repeat(console.log('Wassup'), 5);
 
+console.log("==============================================================");
 const reduce = () => {
 };
+
+console.log("==============================================================");
