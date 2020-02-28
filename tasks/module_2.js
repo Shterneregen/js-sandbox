@@ -4,12 +4,10 @@ console.log("==============================================================");
 console.log("==== Currying ====");
 console.log("==============================================================");
 const mergeWords = (param) => {
-  return (nextParam) => {
-    return nextParam
-        ? mergeWords(`${param} ${nextParam}`)
-        : param;
-  }
-}
+    return (nextParam) => {
+        return nextParam ? mergeWords(`${param} ${nextParam}`) : param;
+    };
+};
 
 const result = mergeWords("GNU")("is")("not")("Unix.")();
 console.log(result);
@@ -41,8 +39,7 @@ console.log("==============================================================");
 const countWords = (inputWords) => {
     let map = new Map();
     for (let f of inputWords) {
-        let i = typeof map.get(f) == "undefined" ? 1 : map.get(f) + 1;
-        map.set(f, i);
+        map.set(f, map.get(f) + 1 || 1);
     }
     return Array.from(map).reduce((obj, [key, value]) => Object.assign(obj, {[key]: value }), {});
 };
