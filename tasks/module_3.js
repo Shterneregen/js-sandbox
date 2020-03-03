@@ -73,7 +73,7 @@ const getAllMethodsFromObject = (obj) =>
     );
 
 const result5 = getAllMethodsFromObject(Math);
-// console.log(result5);
+console.log(result5);
 
 console.log("==============================================================");
 console.log("==== Groups ====");
@@ -90,6 +90,7 @@ class Groups {
         };
         this.has = (memberToCheck) => this.members.includes(memberToCheck);
         this.delete = (memberToDelete) => {
+            if (!this.has(memberToDelete)) return;
             this.members = this.members.filter(
                 (item) => item !== memberToDelete
             );
