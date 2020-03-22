@@ -144,3 +144,43 @@ helper(function* main() {
 // → ‘first resolved’
 // → ‘second resolved’
 // → ‘error happened third rejected’
+
+// ==============================================================
+// ==== Use fetch to work with fake json api server ====
+// ==============================================================
+// npm install node-fetch
+const fetch = require("node-fetch");
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+async function fetchAsync(url, method) {
+  let response = await fetch(url, { method: method || "GET" });
+  if (response.ok) return await response.json();
+  throw new Error(response.status);
+}
+
+fetchAsync("https://jsonplaceholder.typicode.com/comments")
+  .then(data => console.log(data))
+  .catch(reason => console.log(reason.message));
+
+fetchAsync("https://jsonplaceholder.typicode.com/posts/" + getRandomInt(0, 50))
+  .then(data => console.log(data))
+  .catch(reason => console.log(reason.message));
+
+fetchAsync(
+  "https://jsonplaceholder.typicode.com/users/" + getRandomInt(1, 10),
+  "PUT"
+)
+  .then(data => console.log(data))
+  .catch(reason => console.log(reason.message));
+
+fetchAsync(
+  "https://jsonplaceholder.typicode.com/users/" + getRandomInt(1, 10),
+  "DELETE"
+)
+  .then(data => console.log(data))
+  .catch(reason => console.log(reason.message));
