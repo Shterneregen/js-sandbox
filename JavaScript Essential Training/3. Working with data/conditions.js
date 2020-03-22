@@ -40,4 +40,3 @@ var name2 = cachedName || (cachedName = getName());
 
 console.log(name2);
 
-// ==============================================================
