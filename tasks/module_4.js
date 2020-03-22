@@ -3,8 +3,8 @@ console.log("==== Point ====");
 console.log("==============================================================");
 
 function Point(x, y) {
-    if (x === undefined || y === undefined) {
-        throw "Error";
+    if (!x || !y) {
+      throw "Error";
     }
     this.x = x;
     this.y = y;
@@ -23,7 +23,7 @@ console.log("==== Speaker and Screamer ====");
 console.log("==============================================================");
 
 function Speaker(name) {
-    if (name === undefined) {
+    if (!name) {
         throw "Error";
     }
     this.name = name;
