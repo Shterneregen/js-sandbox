@@ -1,0 +1,52 @@
+/*element, element*/
+p, li {
+    color: green;
+}
+
+/*any li*/
+li {
+    list-style-type: "\1F44D";
+}
+
+/*.class*/
+.special {
+}
+
+/*element.class*/
+/*or element.class, element.class, element.class*/
+li.special {
+    color: orange;
+    font-weight: bold;
+}
+
+/*by location*/
+/*any <em> element that is inside (a descendant of) an <li>*/
+li em {
+    color: rebeccapurple;
+}
+
+/*adjacent sibling combinator*/
+/*styling a paragraph when it comes directly after a heading at the same hierarchy level*/
+h1 + p {
+    font-size: 200%;
+}
+
+/*Styling things based on state*/
+a:link {
+    color: pink;
+}
+
+a:visited {
+    color: green;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/*Combining selectors and combinators*/
+body h1 + p .special {
+    color: yellow;
+    background-color: black;
+    padding: 5px;
+}
