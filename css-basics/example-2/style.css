@@ -1,0 +1,54 @@
+.outer {
+    border: 5px solid black;
+}
+
+.box-1 {
+    padding: 10px;
+    width: calc(90% - 30px);
+    background-color: rebeccapurple;
+    color: white;
+}
+
+.box-2 {
+    margin: 30px;
+    width: 100px;
+    height: 100px;
+    background-color: rebeccapurple;
+    transform: rotate(0.8turn)
+}
+
+body {
+    background-color: pink;
+}
+
+/*One of the most common @rules is @media,
+which allows using media queries to apply CSS only when certain conditions are true*/
+@media (min-width: 30em) {
+    body {
+        background-color: yellowgreen;
+    }
+}
+
+.box-3 {
+    width: 100px;
+    height: 100px;
+    background-color: darkorange;
+    padding: 10px 15px 15px 5px; /*Shorthands*/
+    /*==*/
+    /*padding-block-start: 10px*/
+    /*padding-inline-end: 15px;*/
+    /*padding-block-end: 15px;*/
+    /*padding-inline-start: 5px;*/
+}
+
+.box-4 {
+    width: 384px;
+    height: 192px;
+    /*background: red url(https://upload.wikimedia.org/wikipedia/commons/8/81/Flag_of_S%C5%82onim_%28small%29.png) 10px 10px repeat-x fixed;*/
+    /*==*/
+    background-color: red;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/81/Flag_of_S%C5%82onim_%28small%29.png);
+    background-position: 10px 10px;
+    background-repeat: repeat-x;
+    background-scroll: fixed;
+}
