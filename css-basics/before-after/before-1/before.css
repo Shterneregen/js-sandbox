@@ -1,0 +1,74 @@
+
+/* === 1 === */
+li {
+    list-style-type: none;
+    position: relative;
+    margin: 2px;
+    padding: 0.5em 0.5em 0.5em 2em;
+    background: lightgrey;
+    font-family: sans-serif;
+}
+
+li.done {
+    background: #CCFF99;
+}
+
+li.done::before {
+    content: '';
+    position: absolute;
+    border-color: #009933;
+    border-style: solid;
+    border-width: 0 0.3em 0.25em 0;
+    height: 1em;
+    top: 1.3em;
+    left: 0.6em;
+    margin-top: -1em;
+    transform: rotate(45deg);
+    width: 0.5em;
+}
+
+/* === 2 === */
+q::before {
+    content: "«";
+    color: blue;
+}
+
+q::after {
+    content: "»";
+    color: red;
+}
+
+/* === 3 === */
+.exciting-text::after {
+    content: " <- EXCITING!";
+    color: green;
+}
+
+.boring-text::after {
+    content: " <- BORING";
+    color: red;
+}
+
+/* === 4 === */
+span[data-descr] {
+    position: relative;
+    text-decoration: underline;
+    color: #00F;
+    cursor: help;
+}
+
+span[data-descr]:hover::after,
+span[data-descr]:focus::after {
+    content: attr(data-descr);
+    position: absolute;
+    left: 0;
+    top: 24px;
+    min-width: 200px;
+    border: 1px #aaaaaa solid;
+    border-radius: 10px;
+    background-color: #ffffcc;
+    padding: 12px;
+    color: #000000;
+    font-size: 14px;
+    z-index: 1;
+}
