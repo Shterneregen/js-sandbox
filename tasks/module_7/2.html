@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Searching by word in text</title>
+    <style>
+        section {
+            display: flex;
+            height: 400px;
+        }
+        article {
+            padding: 10px;
+            margin: 10px;
+            background: lightcyan;
+        }
+        .output {
+            width: 700px;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <article>
+        <input id="inputText" style="width: 300px" type="text"/><br/><br/>
+        <textarea id="text" style="width: 300px; height: 300px"></textarea>
+    </article>
+    <article>
+        <p id="output" class="output"></p>
+    </article>
+</section>
+
+<script>
+    let output = document.getElementById('output');
+    let textArea = document.getElementById('text');
+    textArea.addEventListener('input', () => showText(textArea.value));
+
+    let inputText = document.getElementById('inputText');
+    inputText.addEventListener('input', () => search(inputText.value));
+
+    function showText(text) {
+        let output = document.getElementById("output");
+        output.innerHTML = text;
+    }
+
+    function search(text) {
+        let innerHTML = textArea.value;
+
+        let index = innerHTML.indexOf(text);
+        if (text && index >= 0) {
+            output.innerHTML = textArea.value.replace(
+                new RegExp(text + '(?!([^<]+)?<)', 'gi'),
+                '<b style="background-color:yellow;">$&</b>'
+            );
+
+            // Second option
+            // innerHTML = innerHTML.substring(0, index)
+            //     + "<b style='color: red'>"
+            //     + innerHTML.substring(index, index + text.length)
+            //     + "</b>" + innerHTML.substring(index + text.length);
+            // output.innerHTML = innerHTML;
+        } else {
+            showText(textArea.value);
+        }
+    }
+</script>
+</body>
+</html>

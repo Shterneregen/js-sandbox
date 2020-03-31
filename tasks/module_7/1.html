@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Showing the width and height of a window</title>
+</head>
+<body>
+<p id="width"></p>
+<p id="height"></p>
+<script>
+    window.onload = function () {
+        updateWindowSize();
+    };
+    window.onresize = function () {
+        updateWindowSize();
+    };
+    let updateWindowSize = () => {
+        document.getElementById("width").innerHTML = "Window width: " + window.innerWidth;
+        document.getElementById("height").innerHTML = "Window height: " + window.innerHeight;
+    }
+</script>
+
+</body>
+</html>
