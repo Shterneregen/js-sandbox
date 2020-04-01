@@ -6,15 +6,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<input id="imageUrl" type="text" placeholder="Image URL" class="input"/>
-<button id="addButton">Add</button>
-<div class="blog-slider__container">
-    <div id="slider-container"></div>
+<div class="wrapper">
+    <section class="control-block">
+        <input id="imageUrl" type="text" placeholder="Image URL" class="input"/>
+        <button id="addButton">Add</button>
 
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <label for="timer">Timer (sec):</label>
+        <input type="number" id="timer" min="1" max="100">
+    </section>
+    <div class="blog-slider__container">
+        <div id="slider-container"></div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
 </div>
-<br>
 
 <script src="slider.js"></script>
 </body>

@@ -1,31 +1,26 @@
 /* Slideshow container */
 .blog-slider__container {
-    max-width: 80%;
     position: relative;
-    margin: auto;
-    height: 300px;
+    padding: 10px 10px 10px 10px;
+    height: 400px;
 }
 
 .blog-slider__container .blogSlides img {
     object-fit: cover;
     width: 100%;
-    height: 300px;
+    height: 400px;
 }
 
 /* Next & previous buttons */
 .prev, .next {
     cursor: pointer;
     position: absolute;
-    /*top: 0;*/
     top: 50%;
-    width: auto;
     margin-top: -22px;
     padding: 16px;
     color: white;
     font-weight: bold;
     font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
 }
 
 /* Position the "next button" to the right */
@@ -67,4 +62,18 @@
 
 .input {
     width: 400px;
+}
+
+.wrapper {
+    background-color: aqua;
+    height: 500px;
+    width: 700px;
+    padding: 10px 10px 10px 10px;
+}
+
+.control-block {
+    background-color: #999999;
+    position: relative;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
 }
