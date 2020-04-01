@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table rows</title>
+    <link rel="stylesheet" href="4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th onclick="sortColumn('age')">Age</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody id="tableData"></tbody>
+    <button id="addButton">Add row</button>
+</table>
+
+<script src="4.js"></script>
+</body>
+</html>

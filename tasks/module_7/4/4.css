@@ -1,0 +1,29 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #aaaaaa;
+}
+
+tr:hover {
+    background-color: black;
+    color: white;
+}
+
+.actionColumn {
+    width: 50px;
+    text-align: center;
+}
