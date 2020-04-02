@@ -27,3 +27,7 @@ tr:hover {
     width: 50px;
     text-align: center;
 }
+
+#checkButton {
+    float: right;
+}

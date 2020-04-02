@@ -1,13 +1,17 @@
+let sortDirection = false;
+let tableData = [
+    new Person(1, "John", "Doe", 25),
+    new Person(2, "James", "Doe", 24),
+    new Person(3, "Judy", "Doe", 19),
+];
+let currentId = Math.max(...tableData.map(i => i.id)) || 0;
+let editableCells;
+
 let addButton = document.getElementById("addButton");
 addButton.addEventListener("click", () => addRow());
 
-let sortDirection = false;
-let tableData = [
-    {id: 1, name: "John", surname: "Doe", age: 25},
-    {id: 2, name: "James", surname: "Doe", age: 24},
-    {id: 3, name: "Judy", surname: "Doe", age: 19},
-];
-let currentId = Math.max(...tableData.map(i => i.id)) || 0;
+let checkButton = document.getElementById("checkButton");
+checkButton.addEventListener("click", () => console.log(tableData));
 
 window.onload = () => {
     loadTableData(tableData);
@@ -17,16 +21,32 @@ let loadTableData = (tableData) => {
     const tableBody = document.getElementById("tableData");
     let dataHtml = "";
 
-    for (let data of tableData) {
+    for (let person of tableData) {
         dataHtml += `
 <tr>
-<td>${data.name}</td>
-<td>${data.surname}</td>
-<td>${data.age}</td>
-<td class="actionColumn" onclick="deleteRow(${data.id})"><i class="fa fa-trash"></i></td>
+<td id="${person.id}" style="display:none;"></td>
+<td class="editable name">${person.name}</td>
+<td class="editable surname">${person.surname}</td>
+<td class="editable age">${person.age}</td>
+<td class="actionColumn" onclick="deleteRow(${person.id})"><i class="fa fa-trash"></i></td>
 </tr>`;
     }
     tableBody.innerHTML = dataHtml;
+
+    editableCells = document.getElementsByClassName("editable");
+    Array.from(editableCells).forEach((el) => {
+        el.addEventListener("dblclick", () => {
+            el.contentEditable = "true";
+        });
+        el.addEventListener("keypress", (e) => {
+            if (e.key === 'Enter') {
+                el.contentEditable = "false";
+                let personId = el.parentElement.firstElementChild.id;
+                let currentPerson = tableData.find(x => x.id === parseInt(personId));
+                currentPerson[el.classList.item(1)] = el.innerHTML;
+            }
+        });
+    });
 };
 
 let sortColumn = (columnName) => {
@@ -46,11 +66,10 @@ let sortNumberColumn = (sort, columnName) => {
             ? p1[columnName] - p2[columnName]
             : p2[columnName] - p2[columnName]
     });
-    console.log(tableData)
 };
 
 let addRow = () => {
-    tableData.push({id: currentId++, name: "", surname: "", age: 0});
+    tableData.push(new Person(++currentId, "", "", ""));
     loadTableData(tableData);
 };
 
@@ -58,3 +77,10 @@ let deleteRow = (id) => {
     tableData = tableData.filter(i => i.id !== id);
     loadTableData(tableData);
 };
+
+function Person(id, name, surname, age) {
+    this.id = id;
+    this.name = name;
+    this.surname = surname;
+    this.age = age;
+}
