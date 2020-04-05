@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scroll to footer</title>
+</head>
+<body>
+<header class="header">Header</header>
+<h1>DOM Events</h1>
+
+<div class="content parent">
+    <h2>Parent</h2>
+    <div class="content child">
+        <h3>Child</h3>
+    </div>
+</div>
+<footer class="footer">
+    Footer
+</footer>
+
+<script>
+    let parentEl = document.querySelector(".parent"),
+        footer = document.getElementsByClassName("footer")[0],
+        header = document.getElementsByClassName("header")[0],
+        pEl = document.createElement("p"),
+        linkEl = document.createElement("a"),
+        aText = document.createTextNode("Scroll to footer"),
+        footerY;
+
+    footer.style.marginTop = "4000px";
+    footerY = footer.getBoundingClientRect().top;
+    headerY = header.getBoundingClientRect().top;
+    linkEl.setAttribute("href", "#");
+    linkEl.classList.add("button");
+    linkEl.appendChild(aText);
+    pEl.appendChild(linkEl);
+    parentEl.appendChild(pEl);
+
+    let scrollToFooter = () => {
+        event.preventDefault();
+        window.scrollTo({
+            top: footerY,
+            behavior: "smooth"
+        });
+    };
+
+    let scrollToTop = () => {
+        event.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+
+    linkEl.addEventListener("click", scrollToFooter);
+    footer.addEventListener("click", scrollToTop);
+
+</script>
+</body>
+</html>

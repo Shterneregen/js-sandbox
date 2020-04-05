@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Key events</title>
+</head>
+<body>
+<h1>DOM Events</h1>
+
+<div class="content parent">
+    <h2>Parent</h2>
+    <div class="content child">
+        <h3>Child</h3>
+        <p id="loggedKeys"></p>
+    </div>
+</div>
+<footer>Footer</footer>
+<script>
+    let logKeys,
+        updateText,
+        showShortcuts;
+
+    logKeys = () => {
+        let key = event.which || event.keyCode || event.charCode;
+        updateText(key, event);
+    };
+
+    updateText = (key) => {
+        console.log(key);
+        String.fromCharCode(key);
+
+        let textContainer = document.getElementById("loggedKeys");
+        let text = textContainer.textContent;
+
+        if (3 === key) {
+            console.log("Cleared!");
+            text = "";
+        } else if (19 === key) {
+            console.log("Saved!")
+        } else if (32 === key) {
+            text += " ";
+        } else if (8 === key && text.length !== 0) {
+            let strings = text.split("");
+            strings.pop();
+            text = strings.join("");
+        } else {
+            text += String.fromCharCode(key);
+        }
+        textContainer.innerHTML = text;
+    };
+
+    showShortcuts = () => {
+        let parentEl = document.querySelector(".parent"),
+            helpTextEl = document.createElement("p"),
+            helpText = document.createTextNode("Shortcuts: Save [crt + s] -- Clear [crt + c]");
+
+        helpTextEl.appendChild(helpText);
+        parentEl.appendChild(helpTextEl);
+    };
+
+    showShortcuts();
+    document.addEventListener("keydown", logKeys);
+</script>
+</body>
+</html>

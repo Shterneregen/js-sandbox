@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Track mouse movement</title>
+</head>
+<body>
+
+<script>
+    let logMousePosition = () => {
+        console.log(event.clientX + " x " + event.clientY);
+    };
+
+    document.addEventListener("mousemove", logMousePosition)
+</script>
+</body>
+</html>

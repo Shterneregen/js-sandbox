@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom Navigation</title>
+</head>
+<body>
+<div>Start</div>
+
+<ul>
+    <li>Info 0</li>
+    <li id="testElement">
+        <div>Hello 0</div>
+        <div>Hello 1</div>
+        <div>Hello 2</div>
+    </li>
+    <li>Info 2</li>
+</ul>
+
+<div>End</div>
+
+<script>
+    console.log("document", document); // all
+    console.log("documentElement", document.documentElement); // <html>...</html>
+    console.log("head", document.head);
+    console.log("body", document.body);
+    console.log("body.childNodes", document.body.childNodes.length);
+
+    for (let i = 0; i < document.body.childNodes.length; i++) {
+        console.log(document.body.childNodes[i]); // Text, DIV, Text, UL, ..., SCRIPT
+    }
+
+    let testElement = document.getElementById("testElement");
+    testElement.addEventListener("click", () => {
+        console.log("parentNode", testElement.parentNode);
+        console.log("childNodes", testElement.childNodes);
+        console.log("previousSibling", testElement.previousSibling);
+        console.log("nextSibling", testElement.nextSibling);
+        console.log("firstChild", testElement.firstChild);
+        console.log("lastChild", testElement.lastChild);
+    });
+
+</script>
+some text
+</body>
+</html>

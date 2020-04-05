@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Track mouse movement</title>
+    <style>
+        .child {
+            border: black solid;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            background-color: #999999;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <div class="child">Child</div>
+</div>
+
+<script>
+    let child = document.querySelector(".child"),
+        mouseOver,
+        mouseEnter,
+        mouseLeave;
+
+    mouseOver = () => {
+        console.log("Mouse over");
+    };
+
+    mouseEnter = () => {
+        console.log("Mouse enter");
+        child.style.cursor = "wait";
+    };
+
+    mouseLeave = () => {
+        console.log("Mouse left");
+        child.style.cursor = "pointer";
+    };
+
+    child.addEventListener("mouseover", mouseOver);
+    child.addEventListener("mouseenter", mouseEnter);
+    child.addEventListener("mouseleave", mouseLeave);
+
+</script>
+</body>
+</html>

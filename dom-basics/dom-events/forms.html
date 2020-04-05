@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forms</title>
+</head>
+<body>
+<p>Contact Us</p>
+<div class="content parent">
+    <h2>Parent</h2>
+    <div class="content child">
+        <h3>Child</h3>
+    </div>
+    <form id="contact" action="" method="post">
+        <p>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" required placeholder="Your name"/>
+        </p>
+        <p>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" required placeholder="Your email"/>
+        </p>
+        <p>
+            <label for="message">Message</label>
+            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        </p>
+        <p>
+            <input type="submit" value="Send!"/>
+        </p>
+    </form>
+</div>
+
+<script>
+    main();
+
+    function main() {
+        let contactForm = document.getElementById("contact"),
+            parentEl = document.querySelector(".parent"),
+            parentHeading = parentEl.querySelector("h2"),
+            childEl = document.querySelector(".child");
+
+        childEl.remove();
+        parentHeading.innerHTML = "Contact Us";
+        contactForm.style.display = "block";
+
+        function processForm(event) {
+            let name = document.getElementsByName("name")[0].value,
+                email = document.getElementsByName("email")[0].value,
+                message = document.getElementsByName("message")[0].value,
+                pEl = document.createElement("p"),
+                thankYouTextNode = document.createElement("a"),
+                thankYouMessage = "";
+
+            thankYouMessage = `Hey ${name}! Thanks for your message: We will email you back at ${email}.`;
+            console.log(thankYouMessage);
+
+            thankYouTextNode.textContent = thankYouMessage;
+            console.log(thankYouTextNode);
+
+            pEl.appendChild(thankYouTextNode);
+            contactForm.remove();
+            parentEl.appendChild(pEl);
+
+            event.preventDefault();
+        }
+
+        contactForm.addEventListener("submit", processForm)
+    }
+</script>
+</body>
+</html>

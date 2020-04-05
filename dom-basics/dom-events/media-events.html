@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Media Events</title>
+</head>
+<body>
+
+<div id="video">
+    <video controls>
+        <source src="https://www.youtube.com/embed/QE1YQnhntgw" type="video/mp4">
+        Sorry, your browser doesn't support embedded videos :(
+    </video>
+    <p>
+        <input id="play" type="submit" value="Play">
+        <input id="pause" type="submit" value="Pause">
+        <input id="restart" type="submit" value="Go to the Beginning">
+        Timestamp: <span id="timestamp">0:00</span>
+    </p>
+</div>
+
+<script>
+    let videoContainer = document.getElementById("video"),
+        videoEl = document.querySelector("video"),
+        parentEl = document.querySelector(".parent"),
+        playBtn = document.getElementById("play"),
+        pauseBtn = document.getElementById("pause"),
+        restartBtn = document.getElementById("restart"),
+        timestamp = document.getElementById("timestamp");
+    // videoContainer.style.display = "block";
+
+    function playVideo() {
+        videoEl.play();
+    }
+
+    function pauseVideo() {
+        videoEl.pause();
+    }
+
+    function restartVideo() {
+        videoEl.currentTime = 0;
+    }
+
+    function updateTimestamp() {
+        timestamp.innerHTML = parseInt(videoEl.currentTime);
+    }
+
+    playBtn.addEventListener("click", playVideo);
+    pauseBtn.addEventListener("click", pauseVideo);
+    restartBtn.addEventListener("click", restartVideo);
+    videoEl.addEventListener("timeupdate", updateTimestamp);
+</script>
+</body>
+</html>
