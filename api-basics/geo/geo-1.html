@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Geo Locator</title>
+    <style>
+        #map_canvas {
+            height: 700px;
+            width: 700px;
+        }
+    </style>
+</head>
+<body>
+<div id="content"></div>
+
+<div id="map_canvas"></div>
+
+<script type="text/javascript"
+        src="https://maps.google.com/maps/api/js?key=AIzaSyDDuGt0E5IEGkcE6ZfrKfUtE9Ko_de66pA"></script>
+<script>
+    let content = document.getElementById("content");
+    let p = document.createElement("p");
+    content.appendChild(p);
+    let text1 = document.createElement("a");
+    p.appendChild(text1);
+
+    navigator.geolocation.getCurrentPosition(function (position) {
+        let latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        let myOptions = {
+            zoom: 8,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.TERRAIN,
+            disableDefaultUI: true
+        };
+        let map = new google.maps.Map(document.querySelector("#map_canvas"), myOptions);
+    });
+</script>
+
+</body>
+</html>
