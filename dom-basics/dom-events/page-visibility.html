@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page Visibility</title>
+</head>
+<body>
+
+<script>
+    window.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            console.log("Tab is hidden");
+        } else {
+            console.log("Tab is focused")
+        }
+
+        switch (document.visibilityState) {
+            case "prerender":
+                console.log("Tab is pre-rendering");
+                break;
+            case "hidden":
+                console.log("Tab is hidden");
+                break;
+            case "visible":
+                console.log("Tab is focused");
+                break;
+        }
+    })
+
+    window.addEventListener("offline", networkStatus);
+    window.addEventListener("online", networkStatus);
+
+    function networkStatus(e) {
+        console.log(e.type);
+    }
+</script>
+</body>
+</html>

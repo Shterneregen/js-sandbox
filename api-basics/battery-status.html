@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Battery Status</title>
+</head>
+<body>
+
+<p>
+    Battery level is <span id="batteryLevel"></span>
+</p>
+
+<script>
+    let batteryLevel = document.getElementById("batteryLevel");
+    navigator.getBattery().then(battery => {
+        batteryLevel.textContent = `${battery.level * 100}%`;
+        battery.addEventListener("levelchange", () => {
+            batteryLevel.textContent = `${this.level * 100}%`;
+        })
+    });
+</script>
+</body>
+</html>

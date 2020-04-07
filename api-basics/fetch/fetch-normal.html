@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fetch() - Working With Data & APIs in JavaScript</title>
+    <style>
+        #rainbow {
+            height: 600px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<img id="rainbow" alt=""/>
+<script>
+    fetch("rainbow.jpg").then(response => {
+        return response.blob();
+    }).then(blob => {
+        document.getElementById("rainbow").src = URL.createObjectURL(blob);
+    }).catch(error => {
+        console.error("error");
+        console.error(error);
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get ISS</title>
+</head>
+<body>
+<h1>Where is the ISS</h1>
+<p>
+    latitude: <span id="lat"></span><br/>
+    longitude: <span id="lon"></span><br/>
+</p>
+
+<script>
+    // https://www.youtube.com/watch?v=uxf0--uiX0I
+    const apiUrl = "https://api.wheretheiss.at/v1/satellites/25544";
+
+    async function getISS() {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        // console.log(data.latitude);
+        // console.log(data.longitude);
+        const {latitude, longitude} = data;
+        document.getElementById("lat").textContent = latitude;
+        document.getElementById("lon").textContent = longitude;
+    }
+
+    getISS();
+</script>
+</body>
+</html>

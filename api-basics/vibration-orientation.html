@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vibration - Orientation</title>
+    <style>
+        img {
+            height: 600px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<img src="fetch/rainbow.jpg" alt="">
+<script>
+    // Vibrate for 1 second
+    navigator.vibrate(1000);
+
+    // Vibrate with a pattern (vibrate, wait, vibrate, ...)
+    navigator.vibrate([400, 300, 300, 200, 500]);
+
+    // Turn off vibration
+    navigator.vibrate(0);
+
+    window.addEventListener("deviceorientation", e => {
+        console.log("Gamma:", e.gamma);
+        console.log("Beta:", e.beta);
+        console.log("Alpha:", e.alpha);
+    });
+
+    let logo = document.querySelector("img");
+    window.addEventListener("networkStatus", e => {
+        let tiltLR = e.gamma;
+        let tiltFB = e.beta;
+
+        logo.style.transform = `rotate(${tiltLR}deg)
+        rotate3d(1,0,0, ${tiltFB * -1}deg)`;
+    })
+</script>
+</body>
+</html>
