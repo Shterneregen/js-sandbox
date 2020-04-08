@@ -1,0 +1,15 @@
+{
+  "name": "my-webpack",
+  "version": "1.0.0",
+  "description": "Install webpack globally\r ```\r npm install webpack -g\r ```",
+  "entry": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
