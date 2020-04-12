@@ -1,6 +1,6 @@
 // people = require("./people");
 // console.log(people);
-import "babel-polyfill";
+// import "babel-polyfill";
 import people from "./people";
 import $ from "jquery";
 
