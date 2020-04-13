@@ -1,0 +1,24 @@
+{
+  "extends": ["prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "max-len": ["error", 120]
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./webpack.config.js"
+      }
+    }
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  }
+}
