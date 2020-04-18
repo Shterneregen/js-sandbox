@@ -30,3 +30,16 @@ An abstraction of the core language.
 **JavaScript Frameworks**  
 AngularJS, React, Vue.js, and so on are front-end application frameworks used to simplify building of advanced 
 interactive web-based applications.
+
+[JSLint](https://jslint.com/)  
+[JSHint](https://jshint.com/)  
+[Minify](https://www.minifier.org/) MINIFY JAVASCRIPT OR CSS CODE
+
+```
+npm install -g eslint
+npm init
+eslint --init
+
+npm install -g uglify-js-es6
+uglifyjs script.js -o script.min.js
+```
