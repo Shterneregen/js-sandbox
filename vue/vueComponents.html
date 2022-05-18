@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Vue example</title>
+    <style>
+        [v-cloack] {
+            display: none;
+        }
+
+        input {
+            margin: 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="app" v-cloak>
+    <login-form/>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+    const {createApp} = Vue
+
+    let app = createApp({})
+    app.component('login-form', {
+        template: `
+          <form @submit.prevent="handleSubmit">
+          <h1>{{ title }}</h1>
+          <input type="email" v-model="email"/>
+          <input type="password" v-model="password"/>
+          <button>Log In</button>
+          </form>
+        `,
+        data() {
+            return {
+                title: 'Login Form',
+                email: '',
+                password: ''
+            }
+        },
+        methods: {
+            handleSubmit() {
+                // e.preventDefault()
+                console.log(this.email, this.password)
+            }
+        }
+    })
+    app.mount('#app')
+</script>
+
+</body>
+</html>
