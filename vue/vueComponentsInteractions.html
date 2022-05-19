@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Vue example</title>
+    <style>
+        [v-cloack] {
+            display: none;
+        }
+
+        input {
+            margin: 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="app" v-cloak>
+    <login-form></login-form>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+    const {createApp} = Vue
+    let app = createApp({})
+
+    // v-bind:label == :label
+    // v-model="email" under the hood adds :modelValue="email"
+    // Props that we pass to children, they are immutable.
+    // We cannot change them in the child, these variables in data() can only be changed in the same component.
+    // That's why modelValue is used in custom-input
+    app.component('login-form', {
+        template: `
+          <form @submit.prevent="handleSubmit">
+          <h1>{{ title }}</h1>
+          <custom-input v-model="email" :label="emailLabel"/>
+          <custom-input v-model="password" :label="passwordLabel"/>
+          <button>Log In</button>
+          </form>
+        `,
+        components: ['custom-input'],
+        data() {
+            return {
+                title: 'Login Form',
+                email: '',
+                password: '',
+                emailLabel: 'Email',
+                passwordLabel: 'Password'
+            }
+        },
+        methods: {
+            handleSubmit() {
+                console.log(this.email, this.password)
+            }
+        }
+    })
+    app.component('custom-input', {
+        template: `
+          <label>
+          {{ label }}
+          <input type="text" v-model="inputValue">
+          </label>
+        `,
+        props: ['label', 'modelValue'],
+        computed: {
+            inputValue: {
+                get() {
+                    return this.modelValue
+                }, set(value) {
+                    // update:modelValue -> event, value -> that passed through event
+                    this.$emit('update:modelValue', value)
+                }
+            }
+        }
+        // data() {
+        //     return {
+        //         inputValue: ''
+        //     }
+        // }
+    })
+
+    app.mount('#app')
+</script>
+
+</body>
+</html>
