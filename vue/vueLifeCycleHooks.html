@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Vue example</title>
+    <style>
+        .box {
+            background-color: purple;
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="app" v-cloak>
+    <button @click="toggleBox">Toggle Box</button>
+    <test-box v-if="isVisible" class="box"/>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+    const {createApp} = Vue
+
+    createApp({
+        data() {
+            return {
+                isVisible: false
+            }
+        },
+        methods: {
+            toggleBox() {
+                this.isVisible = !this.isVisible
+            },
+        },
+        updated() {
+            console.log('updated ')
+        }
+    })
+        .component('test-box', {
+            template: `
+                <div class="box"></div>
+            `,
+            created() {
+                console.log("created")
+            },
+            mounted() {
+                console.log("mounted")
+            }, unmounted() {
+                console.log("unmounted")
+            }
+        })
+        .mount('#app')
+</script>
+
+</body>
+</html>
