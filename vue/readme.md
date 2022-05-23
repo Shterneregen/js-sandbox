@@ -21,3 +21,6 @@
 - **:key** special attribute is primarily used as a hint for Vue's virtual DOM algorithm to identify vnodes when diffing
   the new list of nodes against the old list.
 - **:type**
+
+---
+[Vue.js Course for Beginners](https://www.youtube.com/watch?v=FXpIoQ_rT_c)
