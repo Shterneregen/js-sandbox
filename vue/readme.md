@@ -23,4 +23,6 @@
 - **:type**
 
 ---
-[Vue.js Course for Beginners](https://www.youtube.com/watch?v=FXpIoQ_rT_c)
+- [Vue.js Course for Beginners](https://www.youtube.com/watch?v=FXpIoQ_rT_c)
+- [Product and Cart Static Code Demo](https://github.com/gwenf/vue3-fcc-course-basic-product-cart-demo)
+- [Product and Cart Vue CLI Demo](https://github.com/gwenf/vue3-fcc-course-vue-cli-product-cart-demo)
