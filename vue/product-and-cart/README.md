@@ -14,6 +14,10 @@ vue create product-and-cart
 npm install
 ```
 
+```
+npm install -D sass-loader@^10 sass
+```
+
 ### Compiles and hot-reloads for development
 
 ```
