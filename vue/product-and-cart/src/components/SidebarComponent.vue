@@ -39,7 +39,7 @@
 
         <p class="center" v-if="!Object.keys(cart).length"><em>No items in cart</em></p>
         <div class="spread">
-          <span><strong>Total:</strong>${{ calculateTotal() }}</span>
+          <span><strong>Total: </strong>${{ calculateTotal() }}</span>
           <button class="btn btn-light">Checkout</button>
         </div>
       </div>
