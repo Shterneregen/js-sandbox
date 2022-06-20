@@ -1,3 +1,26 @@
+# Vue CLI
+
+Installation
+
+```shell
+npm install -g @vue/cli
+```
+
+If `vue` is not recognizable:
+Call
+
+```shell
+npm config get prefix
+```
+
+For Windows: add output of the command above to the Path variable
+
+Create project
+
+```shell
+vue create product-and-cart
+```
+
 # product-and-cart
 
 ```
